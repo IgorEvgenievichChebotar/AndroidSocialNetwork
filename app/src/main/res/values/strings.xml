@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidSocialNetwork</string>
+    <string name="app_name">Eatery Social Network</string>
     <string name="hello">Привет!</string>
     <string name="create_account">Ещё нет аккаунта? Создай!</string>
     <string name="welcome_back">С возвращением!</string>
@@ -16,4 +16,18 @@
     <string name="do_not_have_account">Еще нет аккаунта?</string>
     <string name="welcome_text">Приложение для автоматической столовой AutoEatery</string>
     <string name="get_started">Хочу покушать</string>
+    <string name="app_description">Социальная сеть для самых голодных</string>
+    <string name="sign_with">Войти с помощью</string>
+    <string name="gplus">google+</string>
+    <string name="vk">vk</string>
+    <string name="github">github</string>
+    <string name="chat_panel">Chat panel</string>
+    <string name="profile_pic">profile pic</string>
+    <string name="name">Имя</string>
+    <string name="profile">Профиль</string>
+    <string name="message">Сообщение</string>
+    <string name="time">Время отправки</string>
+    <string name="reg">Еще нет аккаунта? Зарегистрироваться</string>
+    <string name="registration">Регистрация</string>
+    <string name="loginRef">Уже есть аккаунт? Войти</string>
 </resources>

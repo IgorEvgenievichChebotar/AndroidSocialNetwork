@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SignUpActivity">
+
+    <LinearLayout
+        android:id="@+id/credentialsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/regButton"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/regText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailAddressText"
+            android:layout_width="340sp"
+            android:layout_height="70sp"
+            android:autofillHints="emailAddress"
+            android:drawableStart="@drawable/mail"
+            android:drawablePadding="5dp"
+            android:hint="@string/mail"
+            android:inputType="textEmailAddress" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:autofillHints="password"
+            android:drawableStart="@drawable/key"
+            android:drawablePadding="5dp"
+            android:hint="@string/password"
+            android:inputType="textVisiblePassword" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/hello"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/regText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello"/>
+
+    <Button
+        android:id="@+id/regButton"
+        android:layout_width="340sp"
+        android:layout_height="60sp"
+        android:text="@string/register"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/github"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/credentialsLayout" />
+
+    <ImageView
+        android:id="@+id/googlePlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/gplus"
+        app:layout_constraintBottom_toTopOf="@id/loginRef"
+        app:layout_constraintEnd_toStartOf="@id/github"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regButton"
+        app:srcCompat="@drawable/g_plus" />
+
+    <ImageView
+        android:id="@+id/github"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/github"
+        app:layout_constraintBottom_toTopOf="@id/loginRef"
+        app:layout_constraintEnd_toStartOf="@id/vk"
+        app:layout_constraintStart_toEndOf="@id/googlePlus"
+        app:layout_constraintTop_toBottomOf="@+id/regButton"
+        app:srcCompat="@drawable/github" />
+
+    <ImageView
+        android:id="@+id/vk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/vk"
+        app:layout_constraintBottom_toTopOf="@id/loginRef"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/github"
+        app:layout_constraintTop_toBottomOf="@+id/regButton"
+        app:srcCompat="@drawable/vk" />
+
+    <TextView
+        android:id="@+id/loginRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12sp"
+        android:text="@string/loginRef"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
