@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AndroidSocialNetwork</string>
+    <string name="hello">Привет!</string>
+    <string name="create_account">Ещё нет аккаунта? Создай!</string>
+    <string name="welcome_back">С возвращением!</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="mail">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="hide_pass">Спрятать пароль</string>
+    <string name="show_pass">Показать пароль</string>
+    <string name="terms_and_conditions_header">Условия использования и политика конфиденциальности</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="already_have_account">Уже есть аккаунт?</string>
+    <string name="do_not_have_account">Еще нет аккаунта?</string>
+    <string name="welcome_text">Приложение для автоматической столовой AutoEatery</string>
+    <string name="get_started">Хочу покушать</string>
+</resources>
