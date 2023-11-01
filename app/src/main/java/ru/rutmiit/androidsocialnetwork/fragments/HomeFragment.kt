@@ -1,24 +1,30 @@
-package ru.rutmiit.androidsocialnetwork.activities
+package ru.rutmiit.androidsocialnetwork.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.rutmiit.androidsocialnetwork.adapters.ChatAdapter
 import ru.rutmiit.androidsocialnetwork.data.Chat
-import ru.rutmiit.androidsocialnetwork.databinding.ActivityHomeBinding
+import ru.rutmiit.androidsocialnetwork.databinding.FragmentHomeBinding
 
 
 /**
  * Главный экран
  */
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
+class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        val view = binding.root
 
         val chatList = listOf(
             Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
@@ -36,9 +42,11 @@ class HomeActivity : AppCompatActivity() {
         )
 
         binding.recycler.adapter = ChatAdapter(chatList)
-        binding.recycler.layoutManager = LinearLayoutManager(this)
+        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
 
         Log.d("HomeActivity", "onCreate")
+
+        return view
     }
 
     override fun onStart() {

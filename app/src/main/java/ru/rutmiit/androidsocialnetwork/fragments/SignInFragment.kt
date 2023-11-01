@@ -1,24 +1,33 @@
-package ru.rutmiit.androidsocialnetwork.activities
+package ru.rutmiit.androidsocialnetwork.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import ru.rutmiit.androidsocialnetwork.R
 import ru.rutmiit.androidsocialnetwork.data.User
-import ru.rutmiit.androidsocialnetwork.databinding.ActivitySigninBinding
+import ru.rutmiit.androidsocialnetwork.databinding.FragmentSigninBinding
 
 /**
  * Экран входа
  */
-class SignInActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySigninBinding
+class SignInFragment : Fragment() {
+    private lateinit var binding: FragmentSigninBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySigninBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentSigninBinding.inflate(layoutInflater)
+        val view = binding.root
 
-        val user = intent.extras?.get("user") as? User
+        val user = arguments?.get("user") as? User
         binding.emailAddressText.setText(user?.email)
         binding.passwordText.setText(user?.password)
 
@@ -28,14 +37,24 @@ class SignInActivity : AppCompatActivity() {
             if (!email.contains("@")) binding.emailAddressText.error =
                 "Введите корректный email адрес"
             else if (password.length < 5) binding.passwordText.error = "Слишком короткий пароль"
-            else startActivity(Intent(this, HomeActivity::class.java))
+            else {
+                parentFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    replace<HomeFragment>(R.id.fragment_container)
+                }
+            }
         }
 
         binding.regRef.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+            parentFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<SignUpFragment>(R.id.fragment_container)
+            }
         }
 
         Log.d("SignInActivity", "onCreate")
+
+        return view
     }
 
     override fun onStart() {
@@ -61,11 +80,6 @@ class SignInActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d("SignInActivity", "onDestroy")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("SignInActivity", "onRestart")
     }
 
 }
