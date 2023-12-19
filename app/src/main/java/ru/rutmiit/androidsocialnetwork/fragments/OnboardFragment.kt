@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.fragment.findNavController
 import ru.rutmiit.androidsocialnetwork.R
 import ru.rutmiit.androidsocialnetwork.data.User
 import ru.rutmiit.androidsocialnetwork.databinding.FragmentOnboardBinding
@@ -23,16 +24,13 @@ class OnboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOnboardBinding.inflate(layoutInflater)
+        binding = FragmentOnboardBinding.inflate(layoutInflater, container, false)
         val view = binding.root
 
         Log.d("OnboardActivity", "onCreate")
 
         binding.button.setOnClickListener {
-            parentFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace<SignInFragment>(R.id.fragment_container)
-            }
+            findNavController().navigate(R.id.signInFragment)
         }
 
         return view;

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -39,11 +40,12 @@ android {
 
 dependencies {
     val fragmentVersion = "1.6.1"
+    val nav_version = "2.7.5"
 
-    // Java language implementation
-    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
     // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
     implementation("com.google.android.material:material:1.10.0")
+    implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
     testImplementation("junit:junit:4.13.2")
 }

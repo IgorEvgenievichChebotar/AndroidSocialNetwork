@@ -60,7 +60,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp"
-            android:onClick="getStarted"
             android:text="@string/get_started"
             android:textColor="@color/colorWhite"
             android:textSize="30sp"

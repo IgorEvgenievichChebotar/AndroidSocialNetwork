@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.fragment.findNavController
 import ru.rutmiit.androidsocialnetwork.R
 import ru.rutmiit.androidsocialnetwork.data.User
 import ru.rutmiit.androidsocialnetwork.databinding.FragmentSigninBinding
@@ -38,18 +39,12 @@ class SignInFragment : Fragment() {
                 "Введите корректный email адрес"
             else if (password.length < 5) binding.passwordText.error = "Слишком короткий пароль"
             else {
-                parentFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    replace<HomeFragment>(R.id.fragment_container)
-                }
+                this.findNavController().navigate(R.id.homeFragment)
             }
         }
 
         binding.regRef.setOnClickListener {
-            parentFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace<SignUpFragment>(R.id.fragment_container)
-            }
+            this.findNavController().navigate(R.id.signUpFragment)
         }
 
         Log.d("SignInActivity", "onCreate")
