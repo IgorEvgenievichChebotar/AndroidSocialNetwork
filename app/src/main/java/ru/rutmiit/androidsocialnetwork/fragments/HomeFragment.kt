@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
+import ru.rutmiit.androidsocialnetwork.adapters.CharacterResponseAdapter
 import ru.rutmiit.androidsocialnetwork.adapters.ChatAdapter
 import ru.rutmiit.androidsocialnetwork.data.Chat
 import ru.rutmiit.androidsocialnetwork.databinding.FragmentHomeBinding
+import ru.rutmiit.androidsocialnetwork.repos.CharacterRepository
+import ru.rutmiit.androidsocialnetwork.repos.CharacterRepositoryImpl
 
 
 /**
@@ -17,32 +22,21 @@ import ru.rutmiit.androidsocialnetwork.databinding.FragmentHomeBinding
  */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private var repo: CharacterRepository = CharacterRepositoryImpl()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         val view = binding.root
 
-        val chatList = listOf(
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-            Chat("Имя", "Профиль", "ласт мессадж", "07.09.2024"),
-        )
-
-        binding.recycler.adapter = ChatAdapter(chatList)
-        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+        lifecycleScope.launch {
+            val characters = repo.getCharacters()
+            binding.recycler.adapter = CharacterResponseAdapter(characters)
+            binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+        }
 
         Log.d("HomeActivity", "onCreate")
 
